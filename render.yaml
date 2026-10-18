@@ -1,0 +1,25 @@
+# Render blueprint for PayPal Pulse AI — one-click deploy.
+# On Render: New -> Blueprint -> connect the GitHub repo containing this file.
+# Then set PAYPAL_CLIENT_ID / PAYPAL_CLIENT_SECRET in the dashboard if/when
+# real sandbox credentials arrive (keep USE_FAKE_PAYPAL=true until then).
+services:
+  - type: web
+    name: paypal-pulse-ai
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn backend.app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: USE_FAKE_PAYPAL
+        value: "true"
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: PAYPAL_CLIENT_ID
+        sync: false
+      - key: PAYPAL_CLIENT_SECRET
+        sync: false
+      # Ephemeral disk on the free tier: the demo DB resets on redeploy.
+      # Fine for the hackathon demo; documented in the README.
+      - key: PULSE_DB
+        value: /tmp/pulse.db

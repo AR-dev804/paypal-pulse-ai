@@ -1,0 +1,19 @@
+Subject: Sandbox access for participants in Pakistan?
+
+Hi team! I'm participating in the hackathon from Pakistan. PayPal
+accounts — including developer accounts, since the signup redirects to
+paypal.com — can't be created with Pakistan as the country, so I can't
+generate sandbox API credentials on my own.
+
+My project is a working merchant-side AI payment-operations assistant
+built against PayPal's REST API surface (orders -> capture -> refunds,
+plus disputes), currently running on a faithful local stub of the same
+API. The code is written to switch to the real sandbox with a single
+env var, and I'd love to demo against the real thing.
+
+Is there a supported way for participants in unsupported countries to
+get sandbox credentials for the hackathon? Happy to verify my identity
+and participation however you need.
+
+Thanks!
+Abdul
